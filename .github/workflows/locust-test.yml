@@ -22,9 +22,9 @@ jobs:
     - name: Ejecutar prueba
       run: |
         locust -f locustfile.py \
-        --host=https://tu-sitio-web.com \
-        --users 10 \
+        --host=https://xat.com/foros019 \
+        --users 20 \
         --spawn-rate 5 \
-        --run-time 30s \
+        --run-time 5m \
         --headless \
         --only-summary
