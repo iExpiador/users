@@ -1,0 +1,30 @@
+name: Prueba de carga con Locust
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  run-locust:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Obtener el código
+      uses: actions/checkout@v4
+      
+    - name: Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: Instalar Locust
+      run: pip install locust
+      
+    - name: Ejecutar prueba
+      run: |
+        locust -f locustfile.py \
+        --host=https://tu-sitio-web.com \
+        --users 10 \
+        --spawn-rate 5 \
+        --run-time 30s \
+        --headless \
+        --only-summary
